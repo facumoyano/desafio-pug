@@ -41,7 +41,15 @@ app.post("/api/productos", (req, res) => {
 app.get("/productos", (req, res) => {
     (async () => {
         await contenedor.getAll().then((response) => {
-            res.render("listproducts.pug", { products: response });
+            if (response) {
+                res.render("listproducts", {
+                    products: response,
+                });
+            } else {
+                res.render("error.pug", {
+                    message: "No hay productos",
+                });
+            }
         });
     })();
 });
