@@ -1,0 +1,22 @@
+html
+    head
+        title='test pug'
+        style
+            include styles.css
+    body
+        include nav.pug
+        h1(class='title-products')="Listado de productos"
+        table(class='table')
+            thead
+                tr
+                    th Nombre
+                    th Precio
+                    th Foto
+            for item in products
+                tbody
+                    tr
+                        td=item.nombre 
+                        td=item.precio 
+                        td 
+                            img(class='product-img', src=item.imgUrl)
+            
